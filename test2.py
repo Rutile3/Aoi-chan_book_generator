@@ -6,7 +6,6 @@ html = requests.get(target_url)         #requestsを使って、webから取得
 
 soup = BeautifulSoup(html.text,"lxml")
 
-#article_part = soup.find_all("div", {"id": "novel_honbun"})
-article_part = soup.find_all("div")
-article = article_part[0].get_text()
+article_part = soup.find_all("div", {"id": "novel_honbun"})
+article = soup.article_part.string
 print(article)
