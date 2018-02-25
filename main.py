@@ -14,7 +14,6 @@ while True:
         break
     else:
         print("対応していないページです\n")
-
 while True:
     try:
         print("話数を入力して下さい")
@@ -23,6 +22,7 @@ while True:
     except ValueError:
         print("自然数を入力してください\n")
 
+print("\n" + "読み込み開始".center(50,"*"))
 file = open("台本.txt", "w")
 for i in range(1, story_number+1):
     print(str(i)+"話読み込み開始", end='    ')
@@ -33,7 +33,7 @@ for i in range(1, story_number+1):
     file.write(text.text)                           #引数の文字列をファイルに書き込む
     print(str(i)+"話読み込み終了")
 file.close()
+print("読み込み終了".center(50,"*") + "\n")
 
-print("\n全て読み込みました")
 print("Enterキーを押すと終了します")
 input()
