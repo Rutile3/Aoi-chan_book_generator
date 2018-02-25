@@ -3,6 +3,13 @@
 ## 概要
 雑に言うと小説サイトの小説をウェブスクレイピングで取得して葵ちゃんに読んでもらうために台本を作るコード
 
+## 事前にPythonで打っておくコマンド
+```
+pip install requests
+pip install beautifulsoup4
+pip install lxml
+```
+
 ## 使い方
 1. urlを入力する
 2. 話数を入力する
