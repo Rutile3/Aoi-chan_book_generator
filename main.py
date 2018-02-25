@@ -24,7 +24,7 @@ while True:
         print("自然数を入力してください\n")
 
 file = open("台本.txt", "w")
-for i in range(1, story_number):
+for i in range(1, story_number+1):
     print(str(i)+"話読み込み開始", end='    ')
     url = target_url + str(i) +  url_end_str           
     html = requests.get(url)                        #HTMLの取得
@@ -34,6 +34,6 @@ for i in range(1, story_number):
     print(str(i)+"話読み込み終了")
 file.close()
 
-print("全て読み込みました")
-print("何かキーを押すと終了します")
+print("\n全て読み込みました")
+print("Enterキーを押すと終了します")
 input()
