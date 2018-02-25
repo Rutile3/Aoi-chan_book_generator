@@ -24,8 +24,7 @@ while True:
         print("自然数を入力してください\n")
 
 file = open("台本.txt", "w")
-i = 1
-while i<=story_number:#for i in range(story_number):#forでやるとなぜか上手くいかない
+for i in range(1, story_number):
     print(str(i)+"話読み込み開始", end='    ')
     url = target_url + str(i) +  url_end_str           
     html = requests.get(url)                        #HTMLの取得
@@ -33,7 +32,6 @@ while i<=story_number:#for i in range(story_number):#forでやるとなぜか上
     text = soup.find("div", {"id": selector_name})  #台本にしたい部分を抽出（idとかを変えれるようにしたらほかのサイトでも使えそう）
     file.write(text.text)                           #引数の文字列をファイルに書き込む
     print(str(i)+"話読み込み終了")
-    i += 1
 file.close()
 
 print("全て読み込みました")
