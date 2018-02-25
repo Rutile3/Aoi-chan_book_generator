@@ -1,10 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-#初期化
-selector_name = ""
-url_end_str = ""
-
 while True:
     print("台本化するurlを入力してください。")
     target_url = input()
@@ -17,19 +13,24 @@ while True:
         url_end_str = "/"
         break
     else:
-        print("対応していないページです")
+        print("対応していないページです\n")
 
-print("話数を入力して下さい")
-story_number = int(input())
+while True:
+    try:
+        print("話数を入力して下さい")
+        story_number = int(input())
+        break
+    except ValueError:
+        print("自然数を入力してください\n")
 
-file = open("台本.txt", "w") # 書き込みモードで開く
+file = open("台本.txt", "w")
 i = 1
 while i<=story_number:#for i in range(story_number):#forでやるとなぜか上手くいかない
     print(str(i)+"話読み込み開始", end='    ')
     url = target_url + str(i) +  url_end_str           
     html = requests.get(url)                        #HTMLの取得
     soup = BeautifulSoup(html.content, "lxml")      #要素を抽出（texでなくcontent）
-    text = soup.find("div", {"id": selector_name}) #台本にしたい部分を抽出（idとかを変えれるようにしたらほかのサイトでも使えそう）
+    text = soup.find("div", {"id": selector_name})  #台本にしたい部分を抽出（idとかを変えれるようにしたらほかのサイトでも使えそう）
     file.write(text.text)                           #引数の文字列をファイルに書き込む
     print(str(i)+"話読み込み終了")
     i += 1
